@@ -14,7 +14,33 @@ const contact = [
   // {id: 5,img: Mail, nom: "Réseaux sociaux", email: "Suivez-nous sur Facebook, Twitter, Instagram"},
 ];
 
+// ======================================================================================
+const faqData = [
+  {
+    question: "Comment passer une commande ?",
+    answer:
+      "Pour passer une commande, ajoutez vos produits au panier, puis cliquez sur 'Valider la commande'. Remplissez vos informations et confirmez.",
+  },
+  {
+    question: "Quels sont les modes de paiement acceptés ?",
+    answer:
+      "Nous acceptons les cartes bancaires (Visa, Mastercard), PayPal et les virements bancaires.",
+  },
+  {
+    question: "Comment suivre ma commande ?",
+    answer:
+      "Après validation de la commande, vous recevrez un email avec un numéro de suivi et un lien pour suivre votre colis.",
+  },
+];
+// ======================================================================================
+
 function Contact() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
@@ -59,11 +85,7 @@ function Contact() {
 
       {/* Formulaire de contacct */}
       <div className="max-w-xl mx-auto p-6 bg-gray-100 shadow-md rounded-md mt-8">
-        <h2 className="text-2xl font-bold mb-6 text-center">Contactez-nous</h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4 ">
           {/* Nom */}
           <div>
             <label className="block mb-1 font-semibold">
@@ -138,6 +160,31 @@ function Contact() {
             </button>
           </div>
         </form>
+      </div>
+      {/* FAQ */}
+      <div className="max-w-3xl mx-auto p-6 bg-gray-100 shadow-md rounded-md mt-8">
+        <h2 className="text-3xl font-bold mb-6 text-center">FAQ</h2>
+        <div className="space-y-4">
+          {faqData.map((item, index) => (
+            <div key={index} className="border rounded-md shadow-sm">
+              {/* Question */}
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full text-left px-4 py-3 font-semibold flex justify-between items-center hover:bg-gray-100 transition-colors"
+              >
+                {item.question}
+                <span className="ml-2">{openIndex === index ? "▲" : "▼"}</span>
+              </button>
+
+              {/* Réponse */}
+              {openIndex === index && (
+                <div className="px-4 py-3 border-t bg-gray-50">
+                  {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
