@@ -1,5 +1,6 @@
 import { HandCoins, Menu, Search, ShoppingCart, UserRound } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const liens = [
   { nom: "Accueil", url: "/" },
@@ -30,7 +31,7 @@ function NavBar() {
               key={lien.nom}
               className="hover:text-accent transition duration-300 cursor-pointer"
             >
-              {lien.nom}
+              <Link to={lien.url}>{lien.nom}</Link>
             </li>
           ))}
         </ul>
@@ -70,13 +71,13 @@ function NavBar() {
       {menuOuvert && (
         <div className="absolute top-full left-0 w-full bg-base-100 shadow-md flex flex-col items-center py-4">
           {liens.map((lien) => (
-            <a
-              href={lien.url}
+            <Link
+              to={lien.url}
               key={lien.nom}
               className="hover:text-accent transition duration-300 cursor-pointer"
             >
               {lien.nom}
-            </a>
+            </Link>
           ))}
         </div>
       )}

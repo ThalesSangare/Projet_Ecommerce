@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer.jsx";
 import Home from "./components/Home.jsx";
@@ -8,11 +9,12 @@ function App() {
   return (
     <>
       <NavBar />
-      {/* <ListeProduits /> */}
-      <Home/>
-      <div>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/produits" element={<ListeProduits />} />
+      </Routes>
+
+      <Footer />
     </>
   );
 }
