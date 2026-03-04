@@ -9,7 +9,6 @@ import Contact from "./components/Contact.jsx";
 function App() {
   return (
     <>
-      <p>thales</p>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
