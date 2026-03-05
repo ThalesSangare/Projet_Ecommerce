@@ -15,15 +15,6 @@ function Propos() {
           meilleurs produits et garantir une livraison rapide. Merci de faire
           partie de notre communauté d'acheteurs en ligne !
         </p>
-        <div>
-          <h2 className="text-2xl font-bold mb-2">Notre équipe</h2>
-          <ul className="list-disc list-inside">
-            <li>Jean Dupont - Fondateur et PDG</li>
-            <li>Marie Curie - Responsable des opérations</li>
-            <li>Albert Einstein - Directeur technique</li>
-            <li>Isaac Newton - Responsable du service client</li>
-          </ul>
-        </div>
       </div>
     </div>
   );
