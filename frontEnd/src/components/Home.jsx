@@ -12,6 +12,7 @@ import ListeProduits from "./ListeProduits";
 import imgLivraison from "../assets/icones/livraison.png";
 import imgPaiement from "../assets/icones/paiement.png";
 import imgSupport from "../assets/icones/support.png";
+import { useNavigate } from "react-router-dom";
 const categories = [
   {
     id: 1,
@@ -47,6 +48,7 @@ const services = [
 ];
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <div>
       <div>{/* un petit slide avec des img de produits */}</div>
@@ -73,12 +75,17 @@ function Home() {
       <div className="flex flex-col">
         {/* une section avec les produits les plus vendus */}
         <div className="flex items-center px-6 py-4">
-          <h3 className="flex text-2xl">Nos produits </h3>
-          <button className="btn hover:btn-accent justify-end ml-auto">
+          <h3 className="flex text-2xl">Nos Meilleurs offres </h3>
+          <button
+            onClick={() => {
+              navigate("/produits");
+            }}
+            className="btn hover:btn-accent justify-end ml-auto"
+          >
             Voir les produits <ArrowRight />
           </button>
         </div>
-        <ListeProduits limite={8} />
+        <ListeProduits limite={12} />
       </div>
       <div>
         {/* une section avec les produits en promotion ou des nouveaux */}
