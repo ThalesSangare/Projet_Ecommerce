@@ -5,6 +5,7 @@ import Home from "./components/Home.jsx";
 import ListeProduits from "./components/ListeProduits.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Contact from "./components/Contact.jsx";
+import DetailsProduit from "./components/DetailsProduit.jsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produits" element={<ListeProduits />} />
+        <Route path="/produits/:id" element={<DetailsProduit />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
