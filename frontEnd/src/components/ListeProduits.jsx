@@ -158,9 +158,19 @@ function ListeProduits({ limite }) {
 
   return (
     //  Flex wrap pour que la grille s'adapte à l'écran
-    <div className="flex gap-4 justify-center flex-wrap">
+    // <div className="flex gap-4 justify-center flex-wrap">
+    //   {produitsAffiches.map((produit) => (
+    //     //  On passe chaque produit à CardsProduits
+    //     <CardsProduits key={produit.id} produits={produit} />
+    //   ))}
+    // </div>
+
+    // je veux
+    <div
+      className="grid gap-4 justify-center 
+                grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+    >
       {produitsAffiches.map((produit) => (
-        //  On passe chaque produit à CardsProduits
         <CardsProduits key={produit.id} produits={produit} />
       ))}
     </div>

@@ -6,7 +6,7 @@ function CardsProduits({ produits }) {
     <div
       className="border border-gray-200 rounded-2xl shadow-md 
                     hover:shadow-xl transition duration-300 
-                    flex flex-col overflow-hidden w-64"
+                    flex flex-col overflow-hidden w-full max-w-xs"
     >
       <Link
         to={`/produits/${produits.id}`}
@@ -31,12 +31,12 @@ function CardsProduits({ produits }) {
           </p>
 
           <button
-            className="flex gap-2 justify-center w-full bg-black text-white 
-                             py-2 rounded-lg 
-                             hover:bg-gray-800 transition"
+            className="text-xs sm:text-sm flex gap-2 justify-center w-full 
+             bg-black text-white py-1.5 sm:py-2 rounded-lg 
+             hover:bg-gray-800 transition"
           >
-            <ShoppingCart className="ml-2" />
-            Ajouter au panier
+            <ShoppingCart className="ml-1 sm:ml-2 w-4 sm:w-5 h-4 sm:h-5" />
+            <span className="text-xs sm:text-sm">Ajouter au panier</span>
           </button>
         </div>
       </div>
