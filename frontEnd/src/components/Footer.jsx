@@ -49,12 +49,12 @@ function Footer() {
 
           <div className="flex items-center gap-3 text-sm hover:text-accent transition">
             <Mail size={18} className="text-accent" />
-            <span>thales@entreprise.com</span>
+            <span>killarie7@gmail.com</span>
           </div>
 
           <div className="flex items-center gap-3 text-sm hover:text-accent transition">
             <MapPin size={18} className="text-accent" />
-            <span>77 rue de la paix, 75000 Paris</span>
+            <span>123 Rue de la Boutique, Lille, France</span>
           </div>
         </div>
       </div>
