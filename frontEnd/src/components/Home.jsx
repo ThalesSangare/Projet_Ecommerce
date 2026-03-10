@@ -12,18 +12,35 @@ import ListeProduits from "./ListeProduits";
 import imgLivraison from "../assets/icones/livraison.png";
 import imgPaiement from "../assets/icones/paiement.png";
 import imgSupport from "../assets/icones/support.png";
+import imgPc from "../assets/categories/pc.png";
+import imgCasque from "../assets/categories/casque.png";
+import imgChaussure from "../assets/categories/chaussure.png";
+import imgMontre from "../assets/categories/montre.png";
+import imgTel from "../assets/categories/tel.png";
+import imgVeste from "../assets/categories/veste.png";
+
 import { useNavigate } from "react-router-dom";
 const categories = [
   {
     id: 1,
     nom: "Telephone",
-    image: <Smartphone size={24} />,
+    image: imgTel,
   },
-  { id: 2, nom: "Ordinateur", image: <Laptop size={24} /> },
-  { id: 3, nom: "Accessoires", image: <Video size={24} /> },
-  { id: 4, nom: "Vetement", image: <ShoppingBag size={24} /> },
-  { id: 5, nom: "Chaussure", image: <ShoppingBasket size={24} /> },
-  { id: 6, nom: "Maison", image: <House size={24} /> },
+  { id: 2, nom: "Ordinateur", image: imgPc },
+  { id: 3, nom: "Accessoires", image: imgCasque },
+  { id: 4, nom: "Vetement", image: imgVeste },
+  { id: 5, nom: "Chaussure", image: imgChaussure },
+  { id: 6, nom: "Montre", image: imgMontre },
+  // {
+  //   id: 1,
+  //   nom: "Telephone",
+  //   image: <Smartphone size={24} />,
+  // },
+  // { id: 2, nom: "Ordinateur", image: <Laptop size={24} /> },
+  // { id: 3, nom: "Accessoires", image: <Video size={24} /> },
+  // { id: 4, nom: "Vetement", image: <ShoppingBag size={24} /> },
+  // { id: 5, nom: "Chaussure", image: <ShoppingBasket size={24} /> },
+  // { id: 6, nom: "Maison", image: <House size={24} /> },
 ];
 
 const services = [
@@ -56,7 +73,7 @@ function Home() {
         {/* une section avec les produits par categorie */}
         {categories.map((categorie) => (
           <button
-          key={categorie.id}
+            key={categorie.id}
             onClick={() => navigate("/produits")}
             className="hover:btn-accent cursor-pointer"
           >
@@ -70,7 +87,11 @@ function Home() {
                  transition-all duration-300
                  p-4"
             >
-              {categorie.image}
+              <img
+                src={categorie.image}
+                alt={categorie.nom}
+                className="w-12 h-12 object-contain mb-2"
+              />
               <h3 className="items-center justify-center">{categorie.nom}</h3>
             </div>
           </button>
@@ -81,12 +102,12 @@ function Home() {
       <div className="flex flex-col">
         {/* une section avec les produits les plus vendus */}
         <div className="flex items-center px-6 py-4">
-          <h3 className="flex text-2xl">Nos Meilleurs offres </h3>
+          <h3 className="flex text-sm md:text-2xl font-bold">Nos Meilleurs offres </h3>
           <button
             onClick={() => {
               navigate("/produits");
             }}
-            className="btn hover:btn-accent justify-end ml-auto"
+            className="btn-sm md:btn-md btn hover:btn-accent justify-end ml-auto"
           >
             Voir les produits <ArrowRight />
           </button>
