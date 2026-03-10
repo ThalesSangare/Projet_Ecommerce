@@ -23,7 +23,7 @@ export default function Inscription() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-green-50 to-gray-100">
+    <div className="min-h-screen flex flex-col md:flex-row from-green-50 to-gray-100">
       {/* cote gauche */}
       <div className="hidden md:flex w-1/2 flex-col justify-center items-center p-16 text-center">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">
