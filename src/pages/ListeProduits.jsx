@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import CardsProduits from "./CardsProduits";
+import api from ".././API/api";
 
 function ListeProduits({ limite }) {
   //  State pour stocker les produits récupérés depuis l'API
@@ -11,28 +12,27 @@ function ListeProduits({ limite }) {
   const [loading, setLoading] = useState(true);
 
   //  useEffect pour fetch les produits une seule fois au montage
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products") // URL de FakeStoreAPI
-      .then((res) => res.json()) // conversion en JSON
-      .then((data) => {
-        //  FakeStoreAPI a les champs : id, title, price, description, category, image
-        // On les mappe pour correspondre à mes composant CardsProduits
-        const produitsFormates = data.map((p) => ({
-          id: p.id,
-          nom: p.title, // correspond à 'nom' utilisé dans CardsProduits
-          prix: p.price, // correspond à 'prix'
-          description: p.description,
-          image: p.image,
-        }));
+useEffect(() => {
+  api
+    .get("/") // URL de FakeStoreAPI
+    .then((res) => {
+      // FakeStoreAPI a les champs : id, title, price, description, image
+      const produitsFormates = res.data.map((p) => ({
+        id: p.id,
+        nom: p.title,
+        prix: p.price,
+        description: p.description,
+        image: p.image,
+      }));
 
-        setProduits(produitsFormates); // mise à jour du state
-        setLoading(false); // chargement terminé
-      })
-      .catch((err) => {
-        console.error("Erreur lors de la récupération des produits :", err);
-        setLoading(false);
-      });
-  }, []);
+      setProduits(produitsFormates);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Erreur lors de la récupération des produits :", err);
+      setLoading(false);
+    });
+}, []);
 
   if (loading) {
     //  Affichage pendant le chargement
