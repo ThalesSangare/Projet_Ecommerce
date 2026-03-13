@@ -7,7 +7,7 @@ function CardsProduits({ produits }) {
     <div
       className="border border-gray-200 rounded-2xl shadow-md 
                     hover:shadow-xl transition duration-300 
-                    flex flex-col overflow-hidden w-full max-w-xs"
+                    flex flex-col overflow-hidden w-full max-w-xs "
     >
       <Link
         to={`/produits/${produits.id}`}
