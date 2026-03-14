@@ -73,7 +73,15 @@ function NavBar() {
                 </span>
               )}
             </Link>
-            <ShoppingCart className="cursor-pointer hover:text-accent transition" />
+            <div className="relative">
+              <ShoppingCart className="cursor-pointer hover:text-accent transition" />
+
+              <span className="absolute -top-4 -right-4 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+                {/* ici recup le nombre de prod dans le panier */}
+                (10)
+              </span>
+            </div>
+
             <UserRound className="cursor-pointer hover:text-accent transition" />
           </div>
         </div>

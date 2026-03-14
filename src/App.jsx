@@ -12,8 +12,10 @@ import NavBar from "./pages/NavBar.jsx";
 import Footer from "./pages/Footer.jsx";
 import { ToastContainer } from "react-toastify";
 import Favoris from "./pages/Favoris.jsx";
+import { PanierContextProvider } from "./components/Panier-context.jsx";
 function App() {
   return (
+    // <PanierContextProvider>
     <>
       <NavBar />
       <Routes>
@@ -33,6 +35,7 @@ function App() {
 
       <Footer />
     </>
+    // </PanierContextProvider>
   );
 }
 
