@@ -7,7 +7,7 @@ import {
   User,
   UserRound,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Recherche from "../components/recherche/Recherche";
 
@@ -20,6 +20,15 @@ const liens = [
 ];
 
 function NavBar() {
+  // compteur de favoris
+  const [nombreFavoris, setNombreFavoris] = useState(0);
+
+  // récupérer les favoris au chargement
+  useEffect(() => {
+    const favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+    setNombreFavoris(favoris.length);
+  }, []);
+
   // etat du menu pour gerer l'affichage sur mobile
   const [menuOuvert, setMenuOuvert] = useState(false);
   // etat de la recherche pour filtrer les produits
@@ -54,7 +63,16 @@ function NavBar() {
               Besoin d'aide ?
             </a>
 
-            <Heart className="cursor-pointer hover:text-accent transition" />
+            {/*  Favoris */}
+            <Link to="/favoris" className="relative">
+              <Heart className="cursor-pointer hover:text-accent transition" />
+
+              {nombreFavoris > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+                  {nombreFavoris}
+                </span>
+              )}
+            </Link>
             <ShoppingCart className="cursor-pointer hover:text-accent transition" />
             <UserRound className="cursor-pointer hover:text-accent transition" />
           </div>

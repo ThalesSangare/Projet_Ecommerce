@@ -11,6 +11,7 @@ import Contact from "./pages/Contact.jsx";
 import NavBar from "./pages/NavBar.jsx";
 import Footer from "./pages/Footer.jsx";
 import { ToastContainer } from "react-toastify";
+import Favoris from "./pages/Favoris.jsx";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/favoris" element={<Favoris />} />
       </Routes>
       <ToastContainer position="bottom-right" autoClose={200} />
 
