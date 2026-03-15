@@ -17,7 +17,6 @@ const liens = [
   { nom: "Homme", url: "/produits" },
   { nom: "Femme", url: "/produits" },
   { nom: "Contact", url: "/contact" },
-  { nom: "Connexion", url: "/login" }, //a retirer plustard
 ];
 
 // a rempli via base de donnee plustard
@@ -58,9 +57,11 @@ function NavBar() {
           {/* LOGO */}
           <div className="flex items-center">
             <HandCoins />
-            <h1 className="ml-2 text-sm md:text-xl text-accent font-bold">
-              SmartMarket
-            </h1>
+            <Link to="/">
+              <h1 className="ml-2 text-sm md:text-xl text-accent font-bold">
+                SmartMarket
+              </h1>
+            </Link>
           </div>
 
           {/* ICONES */}
@@ -93,7 +94,9 @@ function NavBar() {
               )}
             </Link>
 
-            <UserRound className="cursor-pointer hover:text-accent transition" />
+            <Link to="/login">
+              <UserRound className="cursor-pointer hover:text-accent transition" />
+            </Link>
           </div>
         </div>
         {/* Barre de recherche */}
@@ -136,12 +139,31 @@ function NavBar() {
         <div className="bg-accent text-white p-4 font-bold">
           <span className="flex flex-row gap-3">
             <User />
-            Bonjour, Identifiez-vous
+            <Link
+              to="/login"
+              onClick={() => setMenuOuvert(false)}
+              className="underline text-white hover:text-blue-800"
+            >
+              Bonjour, Identifiez-vous
+            </Link>
           </span>
         </div>
 
-        {/* liste des liens */}
+        {/* liste des liens pour petit ecran*/}
         <ul className="flex flex-col p-6 gap-4">
+          {categorieLien.map((categorie) => (
+            <li key={categorie.nom}>
+              <Link
+                to={categorie.url}
+                onClick={() => setMenuOuvert(false)} // ferme le menu quand on clique
+                className="text-lg hover:text-accent transition"
+              >
+                {categorie.nom}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex flex-col p-6 gap-4 border-t">
           {liens.map((lien) => (
             <li key={lien.nom}>
               <Link
@@ -155,13 +177,14 @@ function NavBar() {
           ))}
         </ul>
       </div>
+
       {/* lieste des categories  */}
       <div className="hidden md:flex justify-center border-t border-b border-gray-400 p-5 m-4">
-        <ul className="flex gap-17 ">
+        <ul className="flex md:gap-4 md:text-sm lg:gap-15">
           {categorieLien.map((categori) => (
             <li
               key={categori.nom}
-              className="uppercase tracking-wide hover:text-accent transition duration-300 cursor-pointer"
+              className="uppercase tracking-wide hover:text-accent transition duration-300 cursor-pointer "
             >
               {categori.nom}
             </li>
