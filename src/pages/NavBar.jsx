@@ -13,11 +13,22 @@ import { FavorisContext } from "../components/context/FavorisContext";
 import { PanierContext } from "../components/context/PanierContext";
 
 const liens = [
-  { nom: "Accueil", url: "/" },
-  { nom: "Produits", url: "/produits" },
   { nom: "A propos", url: "/propos" },
+  { nom: "Homme", url: "/produits" },
+  { nom: "Femme", url: "/produits" },
   { nom: "Contact", url: "/contact" },
-  { nom: "Connexion", url: "/login" },
+  { nom: "Connexion", url: "/login" }, //a retirer plustard
+];
+
+// a rempli via base de donnee plustard
+const categorieLien = [
+  { nom: "Nouveautés", url: "/categorie/nouveautes" },
+  { nom: "Chaussures", url: "/categorie/chaussures" },
+  { nom: "Vêtements", url: "/categorie/vetements" },
+  { nom: "Sacs", url: "/categorie/sacs" },
+  { nom: "Montres", url: "/categorie/montres" },
+  { nom: "Accessoires", url: "/categorie/accessoires" },
+  { nom: "Sports & Loisirs", url: "/categorie/sports-loisirs" },
 ];
 
 function NavBar() {
@@ -93,11 +104,11 @@ function NavBar() {
 
       {/* LIENS */}
       <div className="flex-1 flex justify-center">
-        <ul className="hidden md:flex gap-4">
+        <ul className="hidden md:flex gap-10">
           {liens.map((lien) => (
             <li
               key={lien.nom}
-              className="hover:text-accent transition duration-300 cursor-pointer"
+              className="uppercase tracking-wide hover:text-accent transition duration-300 cursor-pointer"
             >
               <Link to={lien.url}>{lien.nom}</Link>
             </li>
@@ -140,6 +151,19 @@ function NavBar() {
               >
                 {lien.nom}
               </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/* lieste des categories  */}
+      <div className="hidden md:flex justify-center border-t border-b border-gray-400 p-5 m-4">
+        <ul className="flex gap-17 ">
+          {categorieLien.map((categori) => (
+            <li
+              key={categori.nom}
+              className="uppercase tracking-wide hover:text-accent transition duration-300 cursor-pointer"
+            >
+              {categori.nom}
             </li>
           ))}
         </ul>

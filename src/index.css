@@ -3,3 +3,6 @@
 @plugin "daisyui" {
   themes: light, dark, synthwave, dracula;
 }
+body {
+  font-family: "Poppins", sans-serif;
+}
